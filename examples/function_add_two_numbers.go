@@ -18,14 +18,14 @@ func main() {
 	ab := funcAdd.NewBlock("")                                 // Block (Body) of the "add" function
 	ab.NewRet(ab.NewAdd(funcAdd.Params[0], funcAdd.Params[1])) // First and last statement for the function "add", basically returns the sum of 'a' and 'b'
 
-  // Main function
+	// Main function
 	funcMain := m.NewFunc(
 		"main",
 		types.I32,
 	)
-  // Block (body) of main function
+	// Block (body) of main function
 	mb := funcMain.NewBlock("")
-  // Return the call of function "add" with parameters 1 and global variable "g" (which has value of 2)
+	// Return the call of function "add" with parameters 1 and global variable "g" (which has value of 2)
 	mb.NewRet(mb.NewCall(funcAdd, constant.NewInt(types.I32, 1), mb.NewLoad(types.I32, globalG)))
 
 	println(m.String())
